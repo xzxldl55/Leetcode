@@ -29,20 +29,15 @@
 
 // 纯数字解法
 var isPalindrome = (x) => {
-    if (x < 0 || x % 10 === 0)
-        return false;
-    if (x === 0 || x < 10)
-        return true;
-    
+    if (x < 0 || x % 10 === 0) return false;
+    if (x === 0 || x < 10) return true;
+
     let div = 1;
 
     // 获取当前
-    while (x / div >= 10)
-        div *= 10;
+    while (x / div >= 10) div *= 10;
     while (div >= 10) {
-        x / div
+        x / div;
     }
-    
 };
 // @lc code=end
-

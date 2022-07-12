@@ -24,7 +24,7 @@ function mergeSort(leftArr, rightArr) {
         rightIndex = 0,
         ret = [];
 
-    while ((leftArrLen > leftIndex) && (rightArrLen > rightIndex)) {
+    while (leftArrLen > leftIndex && rightArrLen > rightIndex) {
         if (leftArr[leftIndex] <= rightArr[rightIndex]) {
             ret.push(leftArr[leftIndex++]);
         } else {
@@ -42,4 +42,4 @@ function mergeSort(leftArr, rightArr) {
 }
 // @lc code=end
 
-console.log(findMedianSortedArrays([2], []))
+console.log(findMedianSortedArrays([2], []));

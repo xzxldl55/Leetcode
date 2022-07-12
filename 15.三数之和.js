@@ -9,7 +9,7 @@
  * @param {number[]} nums
  * @return {number[][]}
  */
-var threeSum = function(nums) {
+var threeSum = function (nums) {
     const len = nums.length;
     const ret = [];
     if (len < 3) {
@@ -20,7 +20,5 @@ var threeSum = function(nums) {
     }
 
     // len > 4的情况
-    
 };
 // @lc code=end
-
