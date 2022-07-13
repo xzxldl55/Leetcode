@@ -58,21 +58,21 @@ var lengthOfLongestSubstringOneFor = function (s) {
     let start = 0,
         len = s.length,
         maxLen = 0,
-        index = 1;
+        end = 1;
 
     const map = new Map();
     map.set(s[start], start);
 
-    for (; index < len; index++) {
-        // 从 start - i 匹配到相同字符
-        if (map.get(s[index]) !== undefined && map.get(s[index]) >= start) {
-            maxLen = Math.max(maxLen, index - start);
-            start = map.get(s[index]) + 1; // 被匹配到的字符往前都已经不会超过maxLen长度了，直接start跳跃到其后
+    for (; end < len; end++) {
+        // 从 start - i 匹配到相同字符(前一条件匹配字符，后一条件过滤已完成匹配的字符段)
+        if (map.get(s[end]) !== undefined && map.get(s[end]) >= start) {
+            maxLen = Math.max(maxLen, end - start);
+            start = map.get(s[end]) + 1; // 被匹配到的字符往前都已经不会超过maxLen长度了，直接start跳跃到其后
         }
-        map.set(s[index], index);
+        map.set(s[end], end);
     }
 
-    maxLen = Math.max(maxLen, index - start);
+    maxLen = Math.max(maxLen, end - start);
 
     return maxLen;
 };
