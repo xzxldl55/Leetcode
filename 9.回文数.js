@@ -9,6 +9,8 @@
  * @param {number} x
  * @return {boolean}
  */
+
+// 从后截取数字，直到截取一半，与剩余部分对比，是否相等（这里也可以从后到前全部逆转在与原值比较）
 var isPalindrome = function(x) {
     if (x < 0) {
         return false
