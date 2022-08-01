@@ -77,6 +77,7 @@ var longestPalindrome = function (s) {
     }
 };
 
+// 动态规划版本
 var longestPalindromeDynamicProgram = function (s) {
     const len = s.length
 
