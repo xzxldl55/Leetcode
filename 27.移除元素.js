@@ -16,16 +16,16 @@ var removeElement = function(nums, val) {
         return 0
     }
 
-    for (let i = len - 1; i >= 0; i--) {
-        if (nums[i] === val) {
-            nums.splice(i, 1)
+    let left = 0;
+    for (let right = 0; right < len; right++) {
+        if (nums[right] !== val) {
+            nums[left++] = nums[right];
         }
     }
 
-    console.log(nums)
-    return nums.length
+    return left;
 };
 // @lc code=end
 
-console.log(removeElement([1, 2, 3, 4, 5, 5, 6, 7], 5))
+console.log(removeElement([1, 2, 3, 4, 5, 5, 6, 7], 10))
 

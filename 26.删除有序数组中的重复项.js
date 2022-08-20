@@ -16,34 +16,21 @@ var removeDuplicates = function(nums) {
         return len
     }
 
-    // 同向双指针
-    let startCommonIndex = len - 1 // 从后开始往前搜索
-    let endCommonIndex = startCommonIndex
-    let commonNum = nums[startCommonIndex]
-
-    for (let i = startCommonIndex - 1; i >= 0; i--) {
-
-        // 因为是有序的，故此我们从后向前，遇到相同的继续将startCommonIndex，直到与commonNum不同
-        // 此时移除 startCommonIndex + 1 ~ endCommonIndex 的值
-        if (nums[i] === commonNum) { // 相同时继续前移
-            startCommonIndex--
-            continue
+    /**
+     * 同向双指针：
+     *
+     * 1. 第一个数可以跳过，从第二个数开始，左指针指向待赋值的位置（作为结果数组），右指针指向扫描位
+     * 2. 当右指针当前位置值与上一位置值相等时，说明该值重复了，不需要被赋值到结果数组，直接跳过right++
+     * 3. 当值不同时，说明该值为重复，赋值到left位置，left++。最终left即为结果数组长度，结果数组为 nums[0:left -1]
+     */
+    let left = 1;
+    for (let right = 1; right < len; right++) {
+        if (nums[right] !== nums[right - 1]) {
+            nums[left++] = nums[right];
         }
-
-        // 不同时，判断start～end大小 > 0即说明存在相同的 「如不能使用splice函数，其实可以将删除这一步，放到上面的startCommonIndex--来做，增加一个end - star判断条件即可」
-        if (endCommonIndex - startCommonIndex) {
-            nums.splice(startCommonIndex, endCommonIndex - startCommonIndex)
-        }
-        commonNum = nums[i] // 不论是否splice，都将commonNum前移，并重置当次start/end
-        startCommonIndex = endCommonIndex = i
     }
 
-    // 处理头部存在重复项的情况(因为扫描到头部已经跳出循环了)
-    if (endCommonIndex - startCommonIndex) {
-        nums.splice(startCommonIndex, endCommonIndex - startCommonIndex)
-    }
-
-    return nums.length
+    return left;
 };
 // @lc code=end
 
