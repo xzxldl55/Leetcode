@@ -1,6 +1,6 @@
 const { swap, newArray, isOrdered } = require('./base')
 
-const array = newArray(100000)
+const array = newArray(1000000)
 
 // 利用 JS Array的方法实现
 function quickSort(arr) {
@@ -75,6 +75,11 @@ function partition(arr, left, right) {
 // console.timeEnd('original')
 
 // ===> original 速度比 JS Sort 快 33 倍
+
+console.time('original')
+quickSortOrignal(array)
+console.timeEnd('original')
+console.log('isOrdered: ', isOrdered(array))
 
 module.exports = {
     execQuickSort() {
